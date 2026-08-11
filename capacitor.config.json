@@ -1,0 +1,17 @@
+{
+  "appId": "com.bitkisel.danisman",
+  "appName": "Bitkisel Danışman",
+  "webDir": "www",
+  "server": {
+    "url": "https://designated-strong-sam-factory.trycloudflare.com",
+    "cleartext": true,
+    "allowNavigation": [
+      "*"
+    ]
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bitkisel Danışman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>🌿 Bitkisel Danışman</h1>
+  <div class="theme-select">
+    <button id="themeButton" class="theme-current" onclick="toggleThemeMenu()">☀️</button>
+    <div class="theme-options" id="themeMenu">
+      <button onclick="setTheme('light')">☀️ Açık</button>
+      <button onclick="setTheme('dark')">🌙 Koyu</button>
+      <button onclick="setTheme('black')">⚫ Siyah</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Analiz Yöntemi Seçin</h2>
+
+    <div class="methods-container">
+        
+        <div class="box-style upload-box-custom" id="photoBox" onclick="toggleUploadMenu(event)"> 
+          <img id="preview" class="preview-image-full" alt="Önizleme" />
+          <div class="box-content" id="photoBoxContent">
+            <span style="font-size: 3rem;">📷</span><br>
+            <span style="font-size: 1.2rem; font-weight: bold;">Fotoğraf Analizi</span>
+          </div>
+          <div class="upload-menu-dropdown" id="uploadMenu">
+            <label class="inner-menu-btn">
+              📁 Galeriden Seç
+              <input id="imageInput" type="file" accept="image/*" style="display: none;" onchange="previewImage(event)">
+            </label>
+            <label class="inner-menu-btn">
+              📷 Fotoğraf Çek
+              <input id="imageInputCamera" type="file" accept="image/*" capture="environment" style="display: none;" onchange="previewImage(event)">
+            </label>
+          </div>
+        </div>
+
+        <div class="box-style blood-box-custom" onclick="openBloodPopup(event)">
+            <div class="box-content">
+                <span style="font-size: 3rem;">🩸</span><br>
+                <span style="font-size: 1.2rem; font-weight: bold;">Tahlil Analizi</span>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="action" onclick="startAnalysis()">Seçili Fotoğrafı Analiz Et</button>
+
+    <div class="loader" id="loader">
+      <div class="leaf-container">
+        <div class="leaf">🌱</div>
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌿</div>
+      </div>
+      <p>Veriler inceleniyor...</p>
+    </div>
+
+    <div id="result" style="display:none;">
+      <h3 id="resultTitle">Sonuç</h3>
+      <p id="resultText"></p>
+    </div>
+
+</div>
+</main>
+
+<div id="bloodMenu" class="blood-menu-popup">
+    <span class="close-btn" onclick="closeBloodPopup(event)">&times;</span>
+    <h3 style="color: #e67e22; margin-top:0;">Kan Değerleri</h3>
+    
+    <img id="bloodPreview" class="blood-preview-img">
+
+    <label id="ocrLabel" class="ocr-button">
+        📸 Tahlil Kağıtlarını Tara
+        <input type="file" id="ocrInput" accept="image/*" multiple style="display: none;" onchange="scanBloodTest()">
+    </label>
+
+    <button id="btnRandom" onclick="fillRandomData()" class="random-btn">
+        🎲 Rastgele Veri (Demo)
+    </button>
+
+    <div class="blood-input-group">
+        <input type="number" id="inp_ferritin" placeholder="Ferritin (ng/mL)">
+        <input type="number" id="inp_b12" placeholder="B12 (pg/mL)">
+        <input type="number" id="inp_dvit" placeholder="D Vit (ng/mL)">
+        <input type="number" id="inp_zinc" placeholder="Çinko (µg/dL)">
+        <input type="number" id="inp_glukoz" placeholder="Şeker (mg/dL)">
+        <input type="number" id="inp_ige" placeholder="IgE (IU/mL)">
+    </div>
+
+    <button onclick="startBloodAnalysis()" class="analyze-btn">
+        🔍 Analiz Et ve Bitki Öner
+    </button>
+</div>
+
+<div id="prepModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle">Hazırlanış</h2>
+    <hr>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<footer>Bitkisel Danışman &copy; 2026</footer>
+<script src="./script.js"></script>
+</body>
+</html>
