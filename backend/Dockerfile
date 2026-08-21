@@ -1,4 +1,3 @@
-# Python 3.11 sürümünü kullan (Render'daki hatayı burada yaşamayacağız)
 FROM python:3.11
 
 # Çalışma klasörü oluştur
