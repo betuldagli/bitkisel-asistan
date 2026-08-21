@@ -150,7 +150,6 @@ def scan_blood_image():
             thresh = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             thresh = cv2.threshold(thresh, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 
-        # GÜNCELLEME: --psm 6 yerine tablolardaki dağınık sayıları çok daha iyi çözen --psm 11 (Sparse Text) modunu kullanıyoruz
         custom_config = r'--oem 3 --psm 11 -c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyzıüşöçğABCDEFGHIJKLMNOÖPQRSTUUÜVWXYZ0123456789.,:-'
         text = pytesseract.image_to_string(thresh, lang='tur+eng', config=custom_config)
         
